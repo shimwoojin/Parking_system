@@ -6,17 +6,18 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/et_id"
+        android:id="@+id/et_carnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="아이디"
+        android:hint="차 번호"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +32,9 @@
         android:hint="비밀번호"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
-        app:layout_constraintStart_toStartOf="@+id/et_id"
-        app:layout_constraintTop_toBottomOf="@+id/et_id"
+        app:layout_constraintEnd_toEndOf="@+id/et_carnum"
+        app:layout_constraintStart_toStartOf="@+id/et_carnum"
+        app:layout_constraintTop_toBottomOf="@+id/et_carnum"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -77,4 +78,20 @@
         app:layout_constraintEnd_toEndOf="@+id/et_age"
         app:layout_constraintStart_toStartOf="@+id/et_age"
         app:layout_constraintTop_toBottomOf="@+id/et_age" />
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="ID"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_carnum"
+        app:layout_constraintEnd_toEndOf="@+id/et_carnum"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/et_carnum"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.889" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

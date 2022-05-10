@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/et_id"
+        android:id="@+id/et_carnum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,9 +31,9 @@
         android:hint="비밀번호"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
-        app:layout_constraintStart_toStartOf="@+id/et_id"
-        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+        app:layout_constraintEnd_toEndOf="@+id/et_carnum"
+        app:layout_constraintStart_toStartOf="@+id/et_carnum"
+        app:layout_constraintTop_toBottomOf="@+id/et_carnum" />
 
     <Button
         android:id="@+id/btn_login"

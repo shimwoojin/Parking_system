@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
@@ -19,7 +18,7 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText et_id, et_pass, et_name, et_age;
+    private EditText et_id, et_carnum, et_pass, et_name, et_age;
     private Button btn_register;
 
         @Override
@@ -28,7 +27,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView( R.layout.activity_register );
 
         //아이디값 찾아주기
-        et_id = findViewById( R.id.et_id );
+        et_id = findViewById( R.id.et_id);
+        et_carnum = findViewById(R.id.et_carnum);
         et_pass = findViewById( R.id.et_pass );
         et_name = findViewById( R.id.et_name );
         et_age = findViewById(R.id.et_age);
@@ -39,6 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String userID = et_id.getText().toString();
+                String CarNumber = et_carnum.getText().toString();
                 String userPass = et_pass.getText().toString();
                 String userName = et_name.getText().toString();
                 int userAge = Integer.parseInt(et_age.getText().toString());
@@ -72,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 };
 
                 //서버로 Volley를 이용해서 요청
-                RegisterRequest registerRequest = new RegisterRequest( userID,userPass,userName,userAge, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest( userID, CarNumber, userPass,userName,userAge, responseListener);
                 RequestQueue queue = Volley.newRequestQueue( RegisterActivity.this );
                 queue.add( registerRequest );
             }
