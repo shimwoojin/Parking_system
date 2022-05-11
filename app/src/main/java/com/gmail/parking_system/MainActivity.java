@@ -4,18 +4,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import java.net.Socket;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView1;
+    private EditText carnumber;
     private View car1,car2,car3,car4,car5,car6,car7,car8,car9,car10;
-    private Button send_button, pay_button,test_button;
-    private Socket socket;
-    private static String SERVER_IP = "192.168.0.5";
-
+    private Button send_button, pay_button,test_button,test_button2;
 
 
     @Override
@@ -26,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         send_button = findViewById(R.id.send_button);
         pay_button = findViewById(R.id.pay_button);
         test_button = findViewById(R.id.test_button);
+        test_button2 = findViewById(R.id.test_button2);
+        carnumber = findViewById(R.id.carnumber);
         this.initialize_view();
 
         pay_button.setOnClickListener( new View.OnClickListener() {
@@ -61,26 +70,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        test_button2.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String CarNumber = carnumber.getText().toString();
+
+                Response.Listener<String> listener = new Response.Listener<String>(){
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject( response );
+                            boolean success = jsonObject.getBoolean( "success" );
+
+                            if (success) {
+                                Toast.makeText(getApplicationContext(), String.format("차량 정보가 DB에 있습니다."), Toast.LENGTH_SHORT).show();
 
 
+                            } else {
+                                Toast.makeText(getApplicationContext(), "차량 정보가 DB에 없습니다.", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
 
 
-    }
-    public class TCPServer implements Runnable {
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                CarnumRequest carnumrequest = new CarnumRequest( CarNumber,listener );
+                RequestQueue queue = Volley.newRequestQueue( MainActivity.this );
+                queue.add( carnumrequest );
 
-        @Override
-        public void run() {
-
-            try {
-                socket = new Socket(SERVER_IP,9999);
-
-            } catch (Exception e) {
-                //text.setText("서버에러");
-                e.printStackTrace();
             }
-        }
-    }
+        });
 
+
+
+
+
+    }
 
     public void initialize_view()
     {
@@ -97,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 }
