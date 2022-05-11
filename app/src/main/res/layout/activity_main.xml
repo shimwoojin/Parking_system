@@ -6,43 +6,192 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:background="@drawable/parkingplace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
-        android:text="라베파통신"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/pay_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:text="주차요금"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/send_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="라베파통신" />
+
+            <Button
+                android:id="@+id/pay_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="주차요금"
+                />
+
+            <Button
+                android:id="@+id/test_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="차없애기"
+                />
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/background"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/background"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/car1"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car2"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="160dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car3"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="240dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car4"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="320dp"
+                android:layout_marginEnd="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car5"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginEnd="250dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car6"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car7"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="160dp"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car8"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="240dp"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car9"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="320dp"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+            <ImageView
+                android:id="@+id/car10"
+                android:layout_width="112dp"
+                android:layout_height="59dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="400dp"
+                android:layout_marginEnd="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:srcCompat="@drawable/car" />
+
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

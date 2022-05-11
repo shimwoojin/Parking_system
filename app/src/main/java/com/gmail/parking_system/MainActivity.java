@@ -11,7 +11,8 @@ import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView1;
-    private Button send_button, pay_button;
+    private View car1,car2,car3,car4,car5,car6,car7,car8,car9,car10;
+    private Button send_button, pay_button,test_button;
     private Socket socket;
     private static String SERVER_IP = "192.168.0.5";
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         send_button = findViewById(R.id.send_button);
         pay_button = findViewById(R.id.pay_button);
+        test_button = findViewById(R.id.test_button);
+        this.initialize_view();
 
         pay_button.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -45,6 +48,22 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        test_button.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(car1.getVisibility() == View.INVISIBLE)
+                {
+                    car1.setVisibility(View.VISIBLE);
+                }
+                else car1.setVisibility(View.INVISIBLE);
+            }
+        });
+
+
+
+
 
     }
     public class TCPServer implements Runnable {
@@ -62,6 +81,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void initialize_view()
+    {
+        car1 = findViewById(R.id.car1);
+        car2 = findViewById(R.id.car2);
+        car3 = findViewById(R.id.car3);
+        car4 = findViewById(R.id.car4);
+        car5 = findViewById(R.id.car5);
+        car6 = findViewById(R.id.car6);
+        car7 = findViewById(R.id.car7);
+        car8 = findViewById(R.id.car8);
+        car9 = findViewById(R.id.car9);
+        car10 = findViewById(R.id.car10);
+
+
+    }
 
 
 }
