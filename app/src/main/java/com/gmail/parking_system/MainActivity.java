@@ -2,11 +2,9 @@ package com.gmail.parking_system;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText carnumber;
     public View car1,car2,car3,car4;
-    private Button send_button, pay_button, test_button2;
+    private Button show_car_button, pay_button, carnum_validate_button;
 
 
     @Override
@@ -31,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        send_button = findViewById(R.id.send_button);
+        show_car_button = findViewById(R.id.show_car_button);
         pay_button = findViewById(R.id.pay_button);
-        test_button2 = findViewById(R.id.test_button2);
+        carnum_validate_button = findViewById(R.id.carnum_validate_button);
         carnumber = findViewById(R.id.carnumber);
 
         this.initialize_view();
@@ -47,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        TCPServer tcp1 = new TCPServer(this,8080,1);
-        TCPServer tcp2 = new TCPServer(this,8081,2);
-        TCPServer tcp3 = new TCPServer(this,8082,3);
-        TCPServer tcp4 = new TCPServer(this,8083,4);
+        ConnectTCP tcp1 = new ConnectTCP(this,8080,1);
+        ConnectTCP tcp2 = new ConnectTCP(this,8081,2);
+        ConnectTCP tcp3 = new ConnectTCP(this,8082,3);
+        ConnectTCP tcp4 = new ConnectTCP(this,8083,4);
 
 
-        send_button.setOnClickListener(new View.OnClickListener() {
+        show_car_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -73,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        test_button2.setOnClickListener( new View.OnClickListener() {
+        carnum_validate_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String CarNumber = carnumber.getText().toString();

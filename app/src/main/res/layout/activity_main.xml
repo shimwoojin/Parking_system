@@ -17,11 +17,18 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/send_button"
+                android:id="@+id/show_car_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="차량 확인" />
+                android:text="주차 차량 확인" />
+
+            <Button
+                android:id="@+id/carnum_validate_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="주차 차단기 open" />
 
             <Button
                 android:id="@+id/pay_button"
@@ -31,13 +38,6 @@
                 android:text="주차요금"
                 />
 
-            <Button
-                android:id="@+id/test_button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="db데이터저장"
-                />
 
 
         </LinearLayout>
