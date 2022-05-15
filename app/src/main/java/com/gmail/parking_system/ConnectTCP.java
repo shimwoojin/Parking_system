@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 
-public class TCPServer implements Runnable {
+public class ConnectTCP implements Runnable {
 
     private Socket socket;
     private static String SERVER_IP = "192.168.0.5";
@@ -20,7 +20,7 @@ public class TCPServer implements Runnable {
     public int port;
     public int carnumber;
 
-    public TCPServer(Context context, int port, int carnumber){
+    public ConnectTCP(Context context, int port, int carnumber){
         mContext = context;
         this.port = port;
         this.carnumber = carnumber;
