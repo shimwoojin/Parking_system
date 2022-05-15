@@ -2,6 +2,7 @@ package com.gmail.parking_system;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +20,10 @@ import org.json.JSONObject;
 
 
 public class MainActivity extends AppCompatActivity {
-    private TextView textView1;
+
     private EditText carnumber;
-    private View car1,car2,car3,car4,car5,car6,car7,car8,car9,car10;
-    private Button send_button, pay_button,test_button,test_button2;
+    public View car1,car2,car3,car4;
+    private Button send_button, pay_button, test_button2;
 
 
     @Override
@@ -32,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         send_button = findViewById(R.id.send_button);
         pay_button = findViewById(R.id.pay_button);
-        test_button = findViewById(R.id.test_button);
         test_button2 = findViewById(R.id.test_button2);
         carnumber = findViewById(R.id.carnumber);
+
         this.initialize_view();
+
 
         pay_button.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -45,30 +47,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TCPServer tcp1 = new TCPServer(this,8080,1);
+        TCPServer tcp2 = new TCPServer(this,8081,2);
+        TCPServer tcp3 = new TCPServer(this,8082,3);
+        TCPServer tcp4 = new TCPServer(this,8083,4);
+
+
         send_button.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-
-                Thread socket = new Thread(new TCPServer());
-                socket.start();
+                System.out.println("hello world");
+                Thread t1 = new Thread(tcp1);
+                Thread t2 = new Thread(tcp2);
+                Thread t3 = new Thread(tcp3);
+                Thread t4 = new Thread(tcp4);
+                t1.start();
+                t2.start();
+                t3.start();
+                t4.start();
+                System.out.println("hello world2");
 
             }
 
         });
 
-        test_button.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                if(car1.getVisibility() == View.INVISIBLE)
-                {
-                    car1.setVisibility(View.VISIBLE);
-                }
-                else car1.setVisibility(View.INVISIBLE);
-            }
-        });
 
         test_button2.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -117,15 +120,11 @@ public class MainActivity extends AppCompatActivity {
         car2 = findViewById(R.id.car2);
         car3 = findViewById(R.id.car3);
         car4 = findViewById(R.id.car4);
-        car5 = findViewById(R.id.car5);
-        car6 = findViewById(R.id.car6);
-        car7 = findViewById(R.id.car7);
-        car8 = findViewById(R.id.car8);
-        car9 = findViewById(R.id.car9);
-        car10 = findViewById(R.id.car10);
 
 
     }
+
+
 
 
 
