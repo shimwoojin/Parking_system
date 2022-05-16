@@ -13,12 +13,12 @@ public class ConnectTCP implements Runnable {
 
     private Socket socket;
     private static String SERVER_IP = "192.168.0.5";
-    public BufferedReader bufferedReader;
     private String inputdata;
+    public BufferedReader bufferedReader;
     public Context mContext;
     public Handler handler = new Handler();
-    public int port;
-    public int carnumber;
+    public int port, carnumber;
+
 
     public ConnectTCP(Context context, int port, int carnumber){
         mContext = context;

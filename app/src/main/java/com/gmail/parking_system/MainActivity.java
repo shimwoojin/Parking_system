@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void initialize_view()
+    private void initialize_view()
     {
         car1 = findViewById(R.id.car1);
         car2 = findViewById(R.id.car2);
