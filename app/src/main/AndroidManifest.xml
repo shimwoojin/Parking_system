@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Parking_system"
         android:usesCleartextTraffic="true">
 
+
         <activity android:name=".MainActivity"/>
         <activity android:name=".Show_pay_Activity"/>
         <activity android:name = ".RegisterActivity"/>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +20,10 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText carnumber;
+    public TextView carnum;
     public View car1,car2,car3,car4;
     private Button show_car_button, pay_button, carnum_validate_button;
+    private String Carnumdata;
 
 
     @Override
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         show_car_button = findViewById(R.id.show_car_button);
         pay_button = findViewById(R.id.pay_button);
         carnum_validate_button = findViewById(R.id.carnum_validate_button);
-        carnumber = findViewById(R.id.carnumber);
+        carnum = findViewById(R.id.carnum);
 
         this.initialize_view();
 
@@ -70,21 +72,31 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        ConnectTCP_Carnum tcp5 = new ConnectTCP_Carnum(this,8084);
+        ConnectTCP_Servo tcp6 = new ConnectTCP_Servo(8085);
 
         carnum_validate_button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String CarNumber = carnumber.getText().toString();
+                Carnumdata = tcp5.get_inputdata();
+                Thread t5 = new Thread(tcp5);
+                t5.start();
+                Carnumdata = carnum.getText().toString();
 
                 Response.Listener<String> listener = new Response.Listener<String>(){
 
                     @Override
                     public void onResponse(String response) {
                         try {
+
                             JSONObject jsonObject = new JSONObject( response );
                             boolean success = jsonObject.getBoolean( "success" );
 
                             if (success) {
+
+                                Thread t6 = new Thread(tcp6);
+                                t6.start();
+
                                 Toast.makeText(getApplicationContext(), String.format("차량 정보가 DB에 있습니다."), Toast.LENGTH_SHORT).show();
 
 
@@ -99,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 };
-                CarnumRequest carnumrequest = new CarnumRequest( CarNumber,listener );
+                CarnumRequest carnumrequest = new CarnumRequest( Carnumdata,listener );
                 RequestQueue queue = Volley.newRequestQueue( MainActivity.this );
                 queue.add( carnumrequest );
 
