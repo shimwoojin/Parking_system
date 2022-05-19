@@ -32,7 +32,7 @@ public class ConnectTCP_Carnum implements  Runnable{
 
             socket = new Socket(SERVER_IP,port);
 
-                Thread.sleep(10000);
+
                 bufferedReader = new BufferedReader(new InputStreamReader((socket.getInputStream())));
                 inputdata = bufferedReader.readLine();
                 handler.post(new Runnable(){

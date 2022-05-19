@@ -12,7 +12,7 @@ import java.net.Socket;
 public class ConnectTCP implements Runnable {
 
     private Socket socket;
-    private static String SERVER_IP = "192.168.0.5";
+    private static String SERVER_IP = "192.168.229.29";
     private String inputdata;
     public BufferedReader bufferedReader;
     public Context mContext;

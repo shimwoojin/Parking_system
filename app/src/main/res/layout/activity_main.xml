@@ -19,25 +19,30 @@
             <Button
                 android:id="@+id/show_car_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="주차 차량 확인" />
 
             <Button
+                android:id="@+id/carnum_show_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="차량 번호 확인" />
+
+            <Button
                 android:id="@+id/carnum_validate_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="주차 차단기 open" />
 
             <Button
-                android:id="@+id/pay_button"
+                android:id="@+id/exit_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="주차요금"
-                />
-
+                android:text="종료" />
 
 
         </LinearLayout>

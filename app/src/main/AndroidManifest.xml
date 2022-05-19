@@ -13,7 +13,6 @@
 
 
         <activity android:name=".MainActivity"/>
-        <activity android:name=".Show_pay_Activity"/>
         <activity android:name = ".RegisterActivity"/>
         <activity android:name = ".LoginActivity"
             android:exported="true">

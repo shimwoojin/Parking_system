@@ -1,5 +1,7 @@
 package com.gmail.parking_system;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public TextView carnum;
     public View car1,car2,car3,car4;
-    private Button show_car_button, pay_button, carnum_validate_button;
+    private Button show_car_button, carnum_validate_button, carnum_show_button, exit_button;
     private String Carnumdata;
 
 
@@ -32,20 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         show_car_button = findViewById(R.id.show_car_button);
-        pay_button = findViewById(R.id.pay_button);
         carnum_validate_button = findViewById(R.id.carnum_validate_button);
+        carnum_show_button = findViewById(R.id.carnum_show_button);
+        exit_button = findViewById(R.id.exit_button);
         carnum = findViewById(R.id.carnum);
 
         this.initialize_view();
 
-
-        pay_button.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            Intent intent = new Intent( MainActivity.this, Show_pay_Activity.class );
-            startActivity( intent );
-            }
-        });
 
         ConnectTCP tcp1 = new ConnectTCP(this,8080,1);
         ConnectTCP tcp2 = new ConnectTCP(this,8081,2);
@@ -75,13 +70,21 @@ public class MainActivity extends AppCompatActivity {
         ConnectTCP_Carnum tcp5 = new ConnectTCP_Carnum(this,8084);
         ConnectTCP_Servo tcp6 = new ConnectTCP_Servo(8085);
 
-        carnum_validate_button.setOnClickListener( new View.OnClickListener() {
+        carnum_show_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Carnumdata = tcp5.get_inputdata();
+            public void onClick(View v) {
                 Thread t5 = new Thread(tcp5);
                 t5.start();
+
+            }
+        });
+
+        carnum_validate_button.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
                 Carnumdata = carnum.getText().toString();
+
 
                 Response.Listener<String> listener = new Response.Listener<String>(){
 
@@ -115,6 +118,31 @@ public class MainActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue( MainActivity.this );
                 queue.add( carnumrequest );
 
+            }
+        });
+
+        exit_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("정말로 종료하시겠습니까?");
+                builder.setTitle("종료 알림창")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.setTitle("종료 알림창");
+                alert.show();
             }
         });
 
